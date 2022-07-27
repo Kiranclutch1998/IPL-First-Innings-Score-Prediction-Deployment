@@ -58,13 +58,19 @@ def predict():
         elif bowling_team == 'Sunrisers Hyderabad':
             temp_array = temp_array + [0,0,0,0,0,0,0,1]
             
-            
+
         overs = float(request.form['overs'])
         runs = int(request.form['runs'])
         wickets = int(request.form['wickets'])
         runs_in_prev_5 = int(request.form['runs_in_prev_5'])
         wickets_in_prev_5 = int(request.form['wickets_in_prev_5'])
-        
+
+        if overs < 5:
+            return 'check after 5.0 overs'
+        if wickets < 0 or wickets > 10:
+            return 'wrong values added in wickets'
+        if runs or runs_in_prev_5 or wickets_in_prev_5 < 0:
+            return 'Negative values entered try again'
         temp_array = temp_array + [overs, runs, wickets, runs_in_prev_5, wickets_in_prev_5]
         
         data = np.array([temp_array])
