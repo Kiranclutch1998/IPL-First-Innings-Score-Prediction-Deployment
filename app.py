@@ -67,9 +67,11 @@ def predict():
 
         if overs < 5:
             return 'check after 5.0 overs'
+        if overs > 20:
+            return 'input less than 20.0 overs'
         if wickets < 0 or wickets > 10:
             return 'wrong values added in wickets'
-        if runs or runs_in_prev_5 or wickets_in_prev_5 < 0:
+        if runs < 0 or runs_in_prev_5 < 0 or wickets_in_prev_5 < 0:
             return 'Negative values entered try again'
         temp_array = temp_array + [overs, runs, wickets, runs_in_prev_5, wickets_in_prev_5]
         
